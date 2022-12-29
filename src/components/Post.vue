@@ -250,17 +250,47 @@ footer{
     margin-left: 21%;
     width: 1100px;
     animation: 1s ease-out 0s 1 slideInFromBottom;
-    margin-left: 17%;
+    margin-left: 30%;
     width: 900px;
 }
 
-@media only screen and (min-width: 1700px) and (max-width: 2500px)  {
+@media only screen and (min-width: 2400px) {
     footer {
         bottom: 0;
         position: sticky;
         margin: 0 auto;
-        margin-left: 450px;
+        margin-left: 750px;
         width: 1000px;
+    }
+}
+
+@media only screen and (min-width: 2200px) and (max-width: 2400px) {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 650px;
+        width: 1000px;
+    }
+}
+
+@media only screen and (min-width: 2000px) and (max-width: 2200px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 550px;
+        width: 1000px;
+    }
+}
+
+@media only screen and (min-width: 1700px) and (max-width: 2000px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 425px;
+        width: 900px;
     }
 }
 @media only screen and (min-width: 1550px) and (max-width: 1700px)  {
