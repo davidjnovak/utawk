@@ -247,10 +247,80 @@ footer{
     position: fixed;
     bottom: 1%;
     z-index: 1000;
-    float: center;
-    margin-left: 13%;
-    width: 100%;
+    margin-left: 21%;
+    width: 1100px;
     animation: 1s ease-out 0s 1 slideInFromBottom;
+    margin-left: 17%;
+    width: 900px;
+}
+
+@media only screen and (min-width: 1700px) and (max-width: 2500px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 450px;
+        width: 1000px;
+    }
+}
+@media only screen and (min-width: 1550px) and (max-width: 1700px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 350px;
+        width: 900px;
+    }
+}
+
+@media only screen and (min-width: 1350px) and (max-width: 1550px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 250px;
+        width: 900px;
+    }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1350px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 150px;
+        width: 800px;
+    }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1100px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 100px;
+        width: 700px;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 900px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 50px;
+        width: 550px;
+    }
+}
+
+@media only screen and (min-width: 521px) and (max-width: 700px)  {
+    footer {
+        bottom: 0;
+        position: sticky;
+        margin: 0 auto;
+        margin-left: 50px;
+        width: 400px;
+    }
 }
 
 @keyframes slideInFromBottom {
@@ -632,12 +702,6 @@ input:checked + .slider:before {
     color: rgb(119, 115, 115);
 }
 
-@media only screen and (min-width: 521px) {
-    footer {
-        width: 70%;
-        bottom: 0%;
-    }
-}
 @media only screen and (max-width: 520px) {
     .mainpage {
         margin: 0px;
@@ -647,6 +711,7 @@ input:checked + .slider:before {
         bottom: 0;
         position: sticky;
         margin: 0 auto;
+        width: 100%;
     }
     
     .list-row .list-item>* {
@@ -759,12 +824,6 @@ input:checked + .slider:before {
     
 }
 
-@media only screen and (max-width: 900px) and (min-width: 521px) {
-    footer {
-        width: 70%;
-        bottom: 0%;
-    }
-}
 
 .filtertawks{
     position: relative;
@@ -824,7 +883,6 @@ input:checked + .slider:before {
   position: sticky;
   z-index: 10;
   padding: 20px;
-  width: 100%;
   box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
 }
 
