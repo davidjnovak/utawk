@@ -212,31 +212,31 @@ const addPost = () => {
                                     </div>
                                 </div>
                             </div>
+                            <footer v-if="currentAccess == true"> <!-- This line checks store's variable, if user has acess to school forum then they are able to see posting box and post to forum-->
+                                <main>
+                                    <div class="new-post-box">
+                                    <div class="input-container ic1">
+                                        <textarea @keydown.enter.exact.prevent="addPost" id="post" class="input" placeholder=" " v-model="newPostText" maxlength=120></textarea>
+                                        <label for="post" class="placeholder">Tawk Here</label>
+                                        <EmojiPicker disable-skin-tones="true" hide-search="true" theme="dark" class="picker" v-if="emojiToggle" :native="true" @select="onSelectEmoji"></EmojiPicker>
+                                        <div class="charlimit">{{120 -  newPostText.length}} Characters Remaining</div>
+                                    </div>
+                                    <div class="bottom">
+                                        <button class="emojiButton" @click="toggleEmoji()"></button>
+                                        <button type="submit" class="post" id="post" @click="addPost">Post</button>
+                                    </div>
+                                    </div>  
+                                    
+                                </main>
+
+                            </footer>
                         </div>
                     </div>
+
                 </div>
             </div>
         </body> 
     </main>
-
-    <footer v-if="currentAccess == true"> <!-- This line checks store's variable, if user has acess to school forum then they are able to see posting box and post to forum-->
-  <main>
-    <div class="new-post-box">
-      <div class="input-container ic1">
-        <textarea @keydown.enter.exact.prevent="addPost" id="post" class="input" placeholder=" " v-model="newPostText" maxlength=120></textarea>
-        <label for="post" class="placeholder">Tawk Here</label>
-        <EmojiPicker disable-skin-tones="true" hide-search="true" theme="dark" class="picker" v-if="emojiToggle" :native="true" @select="onSelectEmoji"></EmojiPicker>
-        <div class="charlimit">{{120 -  newPostText.length}} Characters Remaining</div>
-      </div>
-      <div class="bottom">
-        <button class="emojiButton" @click="toggleEmoji()"></button>
-        <button type="submit" class="post" id="post" @click="addPost">Post</button>
-      </div>
-      </div>  
-      
-  </main>
-
-</footer>
 
 </template>
 
@@ -247,110 +247,10 @@ footer{
     position: fixed;
     bottom: 1%;
     z-index: 1000;
-    margin-left: 21%;
-    width: 1100px;
     animation: 1s ease-out 0s 1 slideInFromBottom;
-    margin-left: 30%;
-    width: 900px;
-}
-
-@media only screen and (min-width: 2400px) {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 750px;
-        width: 1000px;
-    }
-}
-
-@media only screen and (min-width: 2200px) and (max-width: 2400px) {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 650px;
-        width: 1000px;
-    }
-}
-
-@media only screen and (min-width: 2000px) and (max-width: 2200px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 550px;
-        width: 1000px;
-    }
-}
-
-@media only screen and (min-width: 1700px) and (max-width: 2000px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 425px;
-        width: 900px;
-    }
-}
-@media only screen and (min-width: 1550px) and (max-width: 1700px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 350px;
-        width: 900px;
-    }
-}
-
-@media only screen and (min-width: 1350px) and (max-width: 1550px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 250px;
-        width: 900px;
-    }
-}
-
-@media only screen and (min-width: 1100px) and (max-width: 1350px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 150px;
-        width: 800px;
-    }
-}
-
-@media only screen and (min-width: 900px) and (max-width: 1100px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 100px;
-        width: 700px;
-    }
-}
-
-@media only screen and (min-width: 700px) and (max-width: 900px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 50px;
-        width: 550px;
-    }
-}
-
-@media only screen and (min-width: 521px) and (max-width: 700px)  {
-    footer {
-        bottom: 0;
-        position: sticky;
-        margin: 0 auto;
-        margin-left: 50px;
-        width: 400px;
-    }
+    width: 85%;
+    max-width: 1000px;
+    margin-left: 3%;
 }
 
 @keyframes slideInFromBottom {
@@ -914,6 +814,7 @@ input:checked + .slider:before {
   z-index: 10;
   padding: 20px;
   box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+  width: inherit;
 }
 
 .title {
