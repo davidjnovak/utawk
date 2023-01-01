@@ -4,7 +4,9 @@
 
     <!-- This conditional is mased on initialized values so it appears automatically when loading into the page -->
     <main v-if="coordinates.lat == 0 && coordinates.lng == 0" class="local">
-        <h2>Please allow location to access uTawk</h2>
+        <!--<h2>Please allow location to access uTawk</h2>-->
+        <div class="pin"></div>
+        <div class="pulse"></div>
     </main> 
 
     <!-- This conditional is met if the user denies the webpage access to their location -->
@@ -339,7 +341,7 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50% 50% 50% 0;
-  background: #00cae9;
+  background: teal;
   position: absolute;
   transform: rotate(-45deg);
   left: 50%;
@@ -407,11 +409,13 @@ body {
 @keyframes bounce {
   0% {
     opacity: 0;
+    filter: alpha(opacity=0);
     transform: translateY(-2000px) rotate(-45deg);
   }
 
   60% {
     opacity: 1;
+    filter: none;
     transform: translateY(30px) rotate(-45deg);
   }
 
