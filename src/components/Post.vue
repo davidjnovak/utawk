@@ -914,6 +914,7 @@ input:checked + .slider:before {
   border-radius: 20px;
   border: 0;
   box-sizing: border-box;
+
   color: #eee;
   cursor: pointer;
   font-size: 18px;
