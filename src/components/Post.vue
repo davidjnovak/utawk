@@ -212,31 +212,31 @@ const addPost = () => {
                                     </div>
                                 </div>
                             </div>
-                            <footer v-if="currentAccess == true"> <!-- This line checks store's variable, if user has acess to school forum then they are able to see posting box and post to forum-->
-                                <main>
-                                    <div class="new-post-box">
-                                    <div class="input-container ic1">
-                                        <textarea @keydown.enter.exact.prevent="addPost" id="post" class="input" placeholder=" " v-model="newPostText" maxlength=120></textarea>
-                                        <label for="post" class="placeholder">Tawk Here</label>
-                                        <EmojiPicker disable-skin-tones="true" hide-search="true" theme="dark" class="picker" v-if="emojiToggle" :native="true" @select="onSelectEmoji"></EmojiPicker>
-                                        <div class="charlimit">{{120 -  newPostText.length}} Characters Remaining</div>
-                                    </div>
-                                    <div class="bottom">
-                                        <button class="emojiButton" @click="toggleEmoji()"></button>
-                                        <button type="submit" class="post" id="post" @click="addPost">Post</button>
-                                    </div>
-                                    </div>  
-                                    
-                                </main>
-
-                            </footer>
                         </div>
                     </div>
-
                 </div>
             </div>
         </body> 
     </main>
+
+    <footer v-if="currentAccess == true"> <!-- This line checks store's variable, if user has acess to school forum then they are able to see posting box and post to forum-->
+  <main>
+    <div class="new-post-box">
+      <div class="input-container ic1">
+        <textarea @keydown.enter.exact.prevent="addPost" id="post" class="input" placeholder=" " v-model="newPostText" maxlength=120></textarea>
+        <label for="post" class="placeholder">Tawk Here</label>
+        <EmojiPicker disable-skin-tones="true" hide-search="true" theme="dark" class="picker" v-if="emojiToggle" :native="true" @select="onSelectEmoji"></EmojiPicker>
+        <div class="charlimit">{{120 -  newPostText.length}} Characters Remaining</div>
+      </div>
+      <div class="bottom">
+        <button class="emojiButton" @click="toggleEmoji()"></button>
+        <button type="submit" class="post" id="post" @click="addPost">Post</button>
+      </div>
+      </div>  
+      
+  </main>
+
+</footer>
 
 </template>
 
@@ -247,10 +247,10 @@ footer{
     position: fixed;
     bottom: 1%;
     z-index: 1000;
+    float: center;
+    margin-left: 13%;
+    width: 100%;
     animation: 1s ease-out 0s 1 slideInFromBottom;
-    width: 85%;
-    max-width: 1000px;
-    margin-left: 3%;
 }
 
 @keyframes slideInFromBottom {
@@ -632,6 +632,12 @@ input:checked + .slider:before {
     color: rgb(119, 115, 115);
 }
 
+@media only screen and (min-width: 521px) {
+    footer {
+        width: 70%;
+        bottom: 0%;
+    }
+}
 @media only screen and (max-width: 520px) {
     .mainpage {
         margin: 0px;
@@ -641,7 +647,6 @@ input:checked + .slider:before {
         bottom: 0;
         position: sticky;
         margin: 0 auto;
-        width: 100%;
     }
     
     .list-row .list-item>* {
@@ -747,13 +752,19 @@ input:checked + .slider:before {
     }
     
     .item-except {
-        font-size: 12px;
+        font-size: 11.5px;
         margin-inline-end: 1em;    /* relative to the text size */
     }
     
     
 }
 
+@media only screen and (max-width: 900px) and (min-width: 521px) {
+    footer {
+        width: 70%;
+        bottom: 0%;
+    }
+}
 
 .filtertawks{
     position: relative;
@@ -813,8 +824,8 @@ input:checked + .slider:before {
   position: sticky;
   z-index: 10;
   padding: 20px;
+  width: 100%;
   box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
-  width: inherit;
 }
 
 .title {
@@ -903,6 +914,7 @@ input:checked + .slider:before {
   border-radius: 20px;
   border: 0;
   box-sizing: border-box;
+
   color: #eee;
   cursor: pointer;
   font-size: 18px;
