@@ -5,8 +5,8 @@
     <!-- This conditional is mased on initialized values so it appears automatically when loading into the page -->
     <main v-if="coordinates.lat == 0 && coordinates.lng == 0" class="local">
         <!--<h2>Please allow location to access uTawk</h2>-->
-        <div class="pin"></div>
-        <div class="pulse"></div>
+          <div class="pin"></div>
+          <div class="pulse"></div>
     </main> 
 
     <!-- This conditional is met if the user denies the webpage access to their location -->
@@ -337,16 +337,23 @@ body {
   background: #e6e6e6;
 }
 
+
+
+
 .pin {
+  transform: rotate(-45deg) scale(2);
+  transform-origin: 50% 50%;
   width: 30px;
   height: 30px;
   border-radius: 50% 50% 50% 0;
   background: teal;
   position: absolute;
-  transform: rotate(-45deg);
   left: 50%;
   top: 50%;
   margin: -20px 0 0 -20px;
+  animation: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
 }
 .pin:after {
   content: "";
@@ -358,13 +365,10 @@ body {
   border-radius: 50%;
 }
 
-.bounce {
-  animation-name: bounce;
-  animation-fill-mode: both;
-  animation-duration: 1s;
-}
+
 
 .pulse {
+  transform: rotateX(55deg);
   background: #d6d4d4;
   border-radius: 50%;
   height: 14px;
@@ -373,7 +377,6 @@ body {
   left: 50%;
   top: 50%;
   margin: 11px 0px 0px -12px;
-  transform: rotateX(55deg);
   z-index: -2;
 }
 .pulse:after {
