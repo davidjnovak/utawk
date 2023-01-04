@@ -857,6 +857,7 @@ input:checked + .slider:before {
   border-radius: 20px;
   border: 0;
   box-sizing: border-box;
+  resize: none;
   color: #eee;
   font-size: 18px;
   height: 100%;
