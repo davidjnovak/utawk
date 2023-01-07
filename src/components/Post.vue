@@ -8,6 +8,7 @@ import { uniqueNamesGenerator, adjectives, colors, animals  } from "unique-names
 import Cookies from "js-cookie"
 import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
+import * as leo from 'leo-profanity'
 import { useStore } from 'vuex'
 
 
@@ -138,6 +139,11 @@ const setCooldown = () => {
 const verifyPost = (text: string | any[]) => {
   // check for hate speech and whatnot
   if (text.length == 0){
+    return false
+  }
+  else if (leo.check(newPostText.value)){
+    alert("Please don't post vulgar posts");
+    newPostText.value = ""
     return false
   }
   else if (cooldown.value == true){

@@ -12,6 +12,7 @@
     "bad-words": "^3.0.4",
     "esbuild": "^0.15.12",
     "js-cookie": "^3.0.1",
+    "leo-profanity": "^1.7.0",
     "npm": "^9.1.2",
     "timeago.js": "^4.0.2",
     "unique-names-generator": "^4.7.1",
