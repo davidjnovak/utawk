@@ -9,7 +9,7 @@
 
     <!-- This conditional is met if the user denies the webpage access to their location -->
     <main v-else-if="coordinates.lat == 1 && coordinates.lng == 0" class="local">
-        <h2>DENIED ACCESS: Please refresh page and allow location to access hawtawk</h2>
+        <h2>DENIED ACCESS: Please refresh page and allow location to access uTawk</h2>
     </main>
 
   </template>
@@ -96,8 +96,8 @@ export default {
             //-----------------------------------------------------------------------------------------//
             //COORDINATES FOR INSIDE UNCW
             
-            this.coordinates.lat = 34.2239
-            this.coordinates.lng = -77.8696
+            // this.coordinates.lat = 34.2239
+            // this.coordinates.lng = -77.8696
 
             //COORDINATES FOR INSIDE APP STATE
 
