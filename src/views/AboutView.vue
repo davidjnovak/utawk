@@ -8,7 +8,7 @@
       <body data-home-page="https://website3439295.nicepage.io/Page-1.html?version=1e114628-aceb-406f-b2fd-f1c5396d23b7" data-home-page-title="Page 1" class="u-body u-xl-mode" data-lang="en">
     <section class="u-clearfix u-gradient u-section-1" id="sec-b58f">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h1 class="u-custom-font u-font-arial u-text u-text-default u-text-1">HawkTawk.<br>
+        <h1 class="u-custom-font u-font-arial u-text u-text-default u-text-1">uTawk.<br>
         </h1>
         <h2 class="u-custom-font u-font-arial u-text u-text-default u-text-2" spellcheck="false">By Students, For Students. </h2>
         <img class="u-image u-image-round u-preserve-proportions u-radius-10 u-image-1" src="\src\assets\DALLE2022-11-3014.55.47-AcartoonHawkusingalaptoptealbackgrounddigitalart.png" alt="" data-image-width="1024" data-image-height="1024">
@@ -16,13 +16,13 @@
     </section>
     <section class="u-align-center u-clearfix u-grey-80 u-section-2" id="sec-73a9">
       <div class="u-align-left u-clearfix u-sheet u-sheet-1">
-        <h2 class="u-custom-font u-font-arial u-text u-text-default u-text-1">HawkTawk Key Features.</h2>
+        <h2 class="u-custom-font u-font-arial u-text u-text-default u-text-1">uTawk Key Features.</h2>
         <div class="u-list u-list-1">
           <div class="u-repeater u-repeater-1">
             <div class="u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-container-layout-1"><span class="u-file-icon u-icon u-text-white u-icon-1"><img src="/src/assets/1768604-54d9022c.png" alt=""></span>
                 <h3 class="u-align-center u-custom-font u-font-arial u-text u-text-default u-text-palette-4-dark-1 u-text-2">Anonymous</h3>
-                <p class="u-align-center u-custom-font u-font-arial u-text u-text-3" spellcheck="false">HawkTawk let's you speak your mind, without all the he said she said.</p>
+                <p class="u-align-center u-custom-font u-font-arial u-text u-text-3" spellcheck="false">uTawk let's you speak your mind, without all the he said she said.</p>
               </div>
             </div>
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
@@ -64,7 +64,7 @@
 		c-1.237-1.237-1.918-2.885-1.918-4.639S7.775,9.22,9.013,7.983C9.403,7.593,9.403,6.96,9.013,6.569z"></path>
 </g></svg></span>
                 <h3 class="u-align-center u-custom-font u-font-arial u-text u-text-default u-text-palette-4-dark-1 u-text-12">Mobile Responsive</h3>
-                <p class="u-align-center u-custom-font u-font-arial u-text u-text-13" spellcheck="false">HawkTawk is a mobile responsive website, meaning you can enjoy full functionality of HawkTawk from your mobile device.</p>
+                <p class="u-align-center u-custom-font u-font-arial u-text u-text-13" spellcheck="false">uTawk is a mobile responsive website, meaning you can enjoy full functionality of uTawk from your mobile device.</p>
               </div>
             </div>
           </div>
@@ -82,13 +82,13 @@
           <div class="u-tab-content">
             <div class="u-container-style u-grey-80 u-tab-active u-tab-pane u-tab-pane-1" id="tab-081f" role="tabpanel" aria-labelledby="link-tab-081f">
               <div class="u-container-layout u-valign-middle u-container-layout-1">
-                <p class="u-custom-font u-font-arial u-text u-text-default u-text-1" spellcheck="false">We created HawkTawk for a Software Engineering project in UNCW's CSC 450 Course with Dr. Lucas Layman. As students, we wanted to create an application that is useful to other students. HawkTawk is a creation that allows individuals to stay up to date on the latest campus shenanigans, anonymously.<br>
+                <p class="u-custom-font u-font-arial u-text u-text-default u-text-1" spellcheck="false">We created uTawk for a Software Engineering project in UNCW's CSC 450 Course with Dr. Lucas Layman. As students, we wanted to create an application that is useful to other students. uTawk is a creation that allows individuals to stay up to date on the latest campus shenanigans, anonymously.<br>
                   <span class="u-text-palette-4-dark-1">
-                    <br>Creating a chat forum that strictly depends on location was a new and challenging task, but as teammates, we came together to make something beneficial for students everywhere.<br>For most of us on the HawkTawk Development team, we had not worked on a full stack development project with peers before.<br>
+                    <br>Creating a chat forum that strictly depends on location was a new and challenging task, but as teammates, we came together to make something beneficial for students everywhere.<br>For most of us on the uTawk Development team, we had not worked on a full stack development project with peers before.<br>
                   <br>&nbsp;<br>This project was a fantastic learning experience for all of us, but it didn't come without its qualms and frustrations.<br>
                   <br>We tried to work as cleanly as possible but sometimes we ran into bugs, or our code broke the entire project. We persevered and got them squared away.
                     <br>
-                    <br>Thank you for supporting our project and we hope to keep HawkTawk up and running for some time to come, making improvements along the way that we couldn't figure out before the semester's end.
+                    <br>Thank you for supporting our project and we hope to keep uTawk up and running for some time to come, making improvements along the way that we couldn't figure out before the semester's end.
                   </span>
                 </p>
               </div>
