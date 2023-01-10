@@ -341,25 +341,24 @@ body {
 
 
 .pin {
-  transform: rotate(-45deg) scale(2);
-  transform-origin: 50% 50%;
-  width: 30px;
-  height: 30px;
+  transform: rotate(-45deg);
+  width: 60px;
+  height: 60px;
   border-radius: 50% 50% 50% 0;
   background: teal;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: -20px 0 0 -20px;
+  margin: -40px 0 0 -40px;
   animation: bounce;
   animation-fill-mode: both;
   animation-duration: 1s;
 }
 .pin:after {
   content: "";
-  width: 14px;
-  height: 14px;
-  margin: 8px 0 0 8px;
+  width: 28px;
+  height: 28px;
+  margin: 16px 0 0 16px;
   background: #e6e6e6;
   position: absolute;
   border-radius: 50%;
@@ -371,21 +370,21 @@ body {
   transform: rotateX(55deg);
   background: #d6d4d4;
   border-radius: 50%;
-  height: 14px;
-  width: 14px;
+  height: 28px;
+  width: 28px;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin: 11px 0px 0px -12px;
+  margin: 22px 0px 0px -24px;
   z-index: -2;
 }
 .pulse:after {
   content: "";
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 80px;
+  width: 80px;
   position: absolute;
-  margin: -13px 0 0 -13px;
+  margin: -26px 0 0 -26px;
   animation: pulsate 1s ease-out;
   animation-iteration-count: infinite;
   opacity: 0;
