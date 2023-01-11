@@ -14,7 +14,7 @@ import { useStore } from 'vuex'
 const store = useStore() //creates variable to access vuex store
 const currentCollection = store.getters.getSchoolName //gets school's database collection name variable from store 
 const primarySchoolColor = ref('red')
-const secondardySchoolColor = ref('orange')
+const secondarySchoolColor = ref('orange')
 const accentSchoolColor = ref('gray')
 
 
@@ -251,7 +251,7 @@ const addPost = () => {
 :root{
 --primary-color: v-bind(primarySchoolColor);
 --secondary-color: v-bind(secondarySchoolColor);
---accent-color: v-bind(accentColor);
+--accent-color: v-bind(accentSchoolColor);
 
 }
 
