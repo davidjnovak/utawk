@@ -13,9 +13,9 @@ import { useStore } from 'vuex'
 
 const store = useStore() //creates variable to access vuex store
 const currentCollection = store.getters.getSchoolName //gets school's database collection name variable from store 
-const primarySchoolColor = ref('red')
-const secondarySchoolColor = ref('orange')
-const accentSchoolColor = ref('gray')
+const primarySchoolColor = store.getters.getPrimaryColor
+const secondardySchoolColor = store.getters.getSecondaryColor
+const accentSchoolColor = store.getters.getAccentColor
 
 
 const newPostText = ref('')
@@ -209,7 +209,7 @@ const addPost = () => {
                                     <div><a href="#" data-abc="true"><span class="w-48 avatar gradientavi">{{upperCase(displayName).substring(0,1)}}</span></a></div>
                                     <div class="flex">
                                         <div class="timestamp">tawked {{format(timeCreated, 'en_US')}}</div>
-                                        <a v-if="Cookies.get('id') == displayName" href=# @click="mention(displayName)" class="item-author text-color2" data-abc="true">{{displayName}}</a>
+                                        <a v-if="Cookies.get('id') == displayName" href=# @click="mention(displayName)" class="item-author posted-text-color" data-abc="true">{{displayName}}</a>
                                         <a v-else @click="mention(displayName)" href=# class="item-author text-color" data-abc="true">{{displayName}}</a>
                                         <div class="item-except text-muted text-sm h-1x">{{text}}</div>
                                     </div>
@@ -249,10 +249,9 @@ const addPost = () => {
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
 
 :root{
---primary-color: v-bind(primarySchoolColor);
---secondary-color: v-bind(secondarySchoolColor);
---accent-color: v-bind(accentSchoolColor);
-
+--primarycolor: #25BCA2;
+--secondarycolor: #0E6E5E;
+--accentcolor: #79E4A4;
 }
 
 
@@ -278,8 +277,8 @@ footer{
     }
 }
 
-.text-color2 {
-    color: var(--primary-color);
+.posted-text-color {
+    color: var(--secondarycolor);
     font-weight: bold;
 }
 .yourpostrow .yourposts{
@@ -393,9 +392,9 @@ body {
 
 
 .gradientavi {
-    color: rgb(255, 255, 255);
+    color: white;
     border: none;
-    background: #fefefe linear-gradient(50deg, var(--primary-color), var(--accent-color))
+    background: #fefefe linear-gradient(50deg, var(--primarycolor), var(--secondarycolor))
 }
 
 
@@ -629,7 +628,7 @@ input:checked + .slider:before {
     position: absolute;
     margin-left: 90px;
     margin-top: 18px;
-    color: teal;
+    color: var(--accentcolor);
 }
 
 .padding .recent {
@@ -707,7 +706,7 @@ input:checked + .slider:before {
         position: absolute;
         margin-left: 70px;
         margin-top: 4.3em;
-        color: var(--primary-color);
+        color: teal;
         font-size: 10px;
     }
 
@@ -929,7 +928,7 @@ input:checked + .slider:before {
   background-color: white;
 }
 .post:hover {
-  background: var(--primary-color);
+  background: rgb(0,128,128);
 }
 .charlimit{
   font-size: smaller;
