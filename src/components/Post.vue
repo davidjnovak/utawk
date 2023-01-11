@@ -13,6 +13,11 @@ import { useStore } from 'vuex'
 
 const store = useStore() //creates variable to access vuex store
 const currentCollection = store.getters.getSchoolName //gets school's database collection name variable from store 
+const primarySchoolColor = ref('red')
+const secondardySchoolColor = ref('orange')
+const accentSchoolColor = ref('gray')
+
+
 const newPostText = ref('')
 const posts = ref([])
 const cooldown = ref(false)
@@ -243,6 +248,14 @@ const addPost = () => {
 <style scoped>
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
 
+:root{
+--primary-color: v-bind(primarySchoolColor);
+--secondary-color: v-bind(secondarySchoolColor);
+--accent-color: v-bind(accentColor);
+
+}
+
+
 footer{
     position: fixed;
     bottom: 1%;
@@ -266,7 +279,7 @@ footer{
 }
 
 .text-color2 {
-    color: #cc8446;
+    color: var(--primary-color);
     font-weight: bold;
 }
 .yourpostrow .yourposts{
@@ -382,7 +395,7 @@ body {
 .gradientavi {
     color: rgb(255, 255, 255);
     border: none;
-    background: #fefefe linear-gradient(50deg, #cf3e45, #cc8446)
+    background: #fefefe linear-gradient(50deg, var(--primary-color), var(--accent-color))
 }
 
 
@@ -694,7 +707,7 @@ input:checked + .slider:before {
         position: absolute;
         margin-left: 70px;
         margin-top: 4.3em;
-        color: teal;
+        color: var(--primary-color);
         font-size: 10px;
     }
 
@@ -909,14 +922,14 @@ input:checked + .slider:before {
   height: 35px;
   margin-top: 1px;
   margin-bottom: 1px;
-  text-align: center;
+  text-align: center; 
   width: 25%;
 }
 .post:active {
   background-color: white;
 }
 .post:hover {
-  background: rgb(0,128,128);
+  background: var(--primary-color);
 }
 .charlimit{
   font-size: smaller;
