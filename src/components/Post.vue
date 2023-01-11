@@ -266,7 +266,7 @@ footer{
 }
 
 .text-color2 {
-    color: teal;
+    color: #cc8446;
     font-weight: bold;
 }
 .yourpostrow .yourposts{
@@ -382,7 +382,7 @@ body {
 .gradientavi {
     color: rgb(255, 255, 255);
     border: none;
-    background: #fefefe linear-gradient(50deg, teal, rgb(110, 183, 110))
+    background: #fefefe linear-gradient(50deg, #cf3e45, #cc8446)
 }
 
 
@@ -572,7 +572,7 @@ a:link{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: teal;
+    background-color: rgb(101, 101, 101);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -590,11 +590,11 @@ a:link{
 }
 
 input:checked + .slider {
-    background-color: teal;
+    background-color: rgb(118, 118, 118);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px teal;
+    box-shadow: 0 0 1px rgb(216, 215, 215);
 }
 
 input:checked + .slider:before {
@@ -899,7 +899,7 @@ input:checked + .slider:before {
   justify-content: space-between;
 }
 .bottom .post{
-  background-color: rgb(4, 112, 107);
+  background-color: #cc8446;
   border-radius: 20px;
   border: 0;
   box-sizing: border-box;
