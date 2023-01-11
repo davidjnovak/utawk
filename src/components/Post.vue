@@ -13,11 +13,12 @@ import { useStore } from 'vuex'
 
 const store = useStore() //creates variable to access vuex store
 const currentCollection = store.getters.getSchoolName //gets school's database collection name variable from store 
-const primarySchoolColor = store.getters.getPrimaryColor
-const secondardySchoolColor = store.getters.getSecondaryColor
-const accentSchoolColor = store.getters.getAccentColor
-
-
+// const primarycolor = store.getters.getPrimaryColor
+// const secondarycolor = store.getters.getSecondaryColor
+// const accentcolor = store.getters.getAccentColor
+const primaryColor = ref("#25BCA2")
+const secondaryColor = ref("#0E6E5E")
+const accentColor = ref("#79E4A4")
 const newPostText = ref('')
 const posts = ref([])
 const cooldown = ref(false)
@@ -249,9 +250,9 @@ const addPost = () => {
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
 
 :root{
---primarycolor: #25BCA2;
+/* --primarycolor: #25BCA2;
 --secondarycolor: #0E6E5E;
---accentcolor: #79E4A4;
+--accentcolor: #79E4A4; */
 }
 
 
@@ -278,7 +279,7 @@ footer{
 }
 
 .posted-text-color {
-    color: var(--secondarycolor);
+    color: v-bind(primaryColor);
     font-weight: bold;
 }
 .yourpostrow .yourposts{
@@ -394,7 +395,7 @@ body {
 .gradientavi {
     color: white;
     border: none;
-    background: #fefefe linear-gradient(50deg, var(--primarycolor), var(--secondarycolor))
+    background: #fefefe linear-gradient(50deg, var(--primarycolor), v-bind(primaryColor))
 }
 
 
@@ -628,7 +629,7 @@ input:checked + .slider:before {
     position: absolute;
     margin-left: 90px;
     margin-top: 18px;
-    color: var(--accentcolor);
+    color: v-bind(accentColor);
 }
 
 .padding .recent {
