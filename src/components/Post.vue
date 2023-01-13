@@ -8,6 +8,7 @@ import { uniqueNamesGenerator, adjectives, colors, animals  } from "unique-names
 import Cookies from "js-cookie"
 import EmojiPicker from 'vue3-emoji-picker'
 import 'vue3-emoji-picker/css'
+import * as leo from 'leo-profanity'
 import { useStore } from 'vuex'
 
 
@@ -146,6 +147,11 @@ const verifyPost = (text: string | any[]) => {
   if (text.length == 0){
     return false
   }
+  else if (leo.check(newPostText.value)){
+    alert("Please don't post vulgar posts");
+    newPostText.value = ""
+    return false
+  }
   else if (cooldown.value == true){
     alert("Please don't spam post")
     return false
@@ -238,7 +244,6 @@ const addPost = () => {
                             </footer>
                         </div>
                     </div>
-
                 </div>
             </div>
         </body> 
@@ -260,10 +265,10 @@ footer{
     position: fixed;
     bottom: 1%;
     z-index: 1000;
-    animation: 1s ease-out 0s 1 slideInFromBottom;
     width: 85%;
     max-width: 1000px;
     margin-left: 3%;
+    animation: 1s ease-out 0s 1 slideInFromBottom;
 }
 
 @keyframes slideInFromBottom {
@@ -655,6 +660,7 @@ input:checked + .slider:before {
         position: sticky;
         margin: 0 auto;
         width: 100%;
+        bottom: 0%;
     }
     
     .list-row .list-item>* {
@@ -760,7 +766,7 @@ input:checked + .slider:before {
     }
     
     .item-except {
-        font-size: 12px;
+        font-size: 11.5px;
         margin-inline-end: 1em;    /* relative to the text size */
     }
     
@@ -826,8 +832,8 @@ input:checked + .slider:before {
   position: sticky;
   z-index: 10;
   padding: 20px;
+  width: 100%;
   box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
-  width: inherit;
 }
 
 .title {
@@ -859,6 +865,7 @@ input:checked + .slider:before {
   border-radius: 20px;
   border: 0;
   box-sizing: border-box;
+  resize: none;
   color: #eee;
   font-size: 18px;
   height: 100%;
@@ -916,6 +923,7 @@ input:checked + .slider:before {
   border-radius: 20px;
   border: 0;
   box-sizing: border-box;
+
   color: #eee;
   cursor: pointer;
   font-size: 18px;
