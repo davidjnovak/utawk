@@ -21,7 +21,7 @@
 
 
       <header id="app-header" class="app-header">
-        <img alt="Vue logo" class="logo" src="@/assets/hawkTawkLogo.png" width="125" height="125" />
+        <img alt="Vue logo" class="logo" src="@/assets/uTawkLogo.png" width="125" height="125" />
         <h3 class="animate-charcter">uTawk</h3>
         <nav>
           <RouterLink to="/">Home</RouterLink>
@@ -203,7 +203,10 @@ header img {
   width: 64px;
   height: 64px;
   float: left;
-  padding: 1px;
+}
+
+img.logo {
+  margin-top: 0em;
 }
 
 h3 {
@@ -230,8 +233,8 @@ header h2 {
 }
 .app-header {
   display: block;
-  background: rgb(0,128,128);
-  background: linear-gradient(335deg, rgba(0,128,128,1) 0%, rgba(0,0,0,1) 100%);
+  background: rgb(202, 100, 57);
+  background: linear-gradient(335deg, rgb(148, 148, 148) 0%, rgb(63, 61, 60) 100%);
   position: fixed;
   top: 0;
   left: 0;
@@ -285,7 +288,7 @@ header {
   z-index: 10;
 }
 header a {
-  color: teal;
+  color: #cf3e45
 }
 
 .logo {
