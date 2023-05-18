@@ -1,4 +1,5 @@
 <template>
+  
   <!--This template is for the welcome page-->
   <template v-if="location.access == false"> 
 
@@ -18,9 +19,12 @@
   
   <!--This template is the actual forum and any other potential views to be used once the user allows the webpage access to their location -->
   <template v-else-if="location.access == true">
-
-
-      <header id="app-header" class="app-header">
+       <header id ="app-header" class="app-header">
+        <vue-basic-alert 
+       :duration="100"
+       :closeIn="900"
+       ref="alert" />
+       
         <img alt="Vue logo" class="logo" src="@/assets/uTawkLogo.png" width="125" height="125" />
         <h3 class="animate-charcter">uTawk</h3>
         <nav>
@@ -43,6 +47,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import {closest, schoolList} from './classes/distance.js'
 import { ref } from 'vue'
+import VueBasicAlert from 'vue-basic-alert'
 
 //component keys are for labeling header portion to update curretn school info to user
 const componentKey1 = ref(0)
@@ -145,6 +150,15 @@ export default {
               this.$store.commit("saveSchoolAccess", true) //updates variable in store to share user hhas acces to school forum
               
               //alerts user of forum user is accessing
+          //     $refs.alert.showAlert(
+          //   'success', // There are 4 types of alert: success, info, warning, error
+          //   'This is the information of something you may know Success.', // Message of the alert
+          //   'Success 200', // Header of the alert
+          //   { iconSize: 35, // Size of the icon (px)
+          //     iconType: 'solid', // Icon styles: now only 2 styles 'solid' and 'regular'
+          //     position: 'top right' } // Position of the alert 'top right', 'top left', 'bottom left', 'bottom right'
+          // )
+          this.$refs.showAlert('success', "Welcome", "header", {iconSize: 35, iconType: 'solid', position: 'top right'})
               alert("You are in range of our " + school +  " chatroom!")
 
             } else {
