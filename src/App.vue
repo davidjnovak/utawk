@@ -217,7 +217,10 @@ header img {
   width: 64px;
   height: 64px;
   float: left;
-  padding: 1px;
+}
+
+img.logo {
+  margin-top: 0em;
 }
 
 h3 {
