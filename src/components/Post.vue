@@ -143,7 +143,6 @@ const setCooldown = () => {
 }
 
 const verifyPost = (text: string | any[]) => {
-  // check for hate speech and whatnot
   if (text.length == 0){
     return false
   }
