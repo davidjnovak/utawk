@@ -4,6 +4,8 @@ import router from './router'
 import Vue3Geolocation from 'vue3-geolocation'
 import './assets/main.css'
 import { createStore } from 'vuex'
+import VueBasicAlert from 'vue-basic-alert'
+
 
 //store created using vuex to save and get variables needed by multiple vues in this project
 const store = createStore({
@@ -42,6 +44,7 @@ const app = createApp(App)
 app.use(Vue3Geolocation)
 app.use(router)
 app.use(store)
+app.use(VueBasicAlert)
 
 app.mount('#app')
 

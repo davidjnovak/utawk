@@ -1,4 +1,5 @@
 <template>
+  
   <!--This template is for the welcome page-->
   <template v-if="location.access == false"> 
 
@@ -18,10 +19,13 @@
   
   <!--This template is the actual forum and any other potential views to be used once the user allows the webpage access to their location -->
   <template v-else-if="location.access == true">
-
-
-      <header id="app-header" class="app-header">
-        <img alt="Vue logo" class="logo" src="@/assets/hawkTawkLogo.png" width="125" height="125" />
+       <header id ="app-header" class="app-header">
+        <vue-basic-alert 
+       :duration="100"
+       :closeIn="900"
+       ref="alert" />
+       
+        <img alt="Vue logo" class="logo" src="@/assets/uTawkLogo.png" width="125" height="125" />
         <h3 class="animate-charcter">uTawk</h3>
         <nav>
           <RouterLink to="/">Home</RouterLink>
@@ -43,6 +47,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import {closest, schoolList} from './classes/distance.js'
 import { ref } from 'vue'
+import VueBasicAlert from 'vue-basic-alert'
 
 //component keys are for labeling header portion to update curretn school info to user
 const componentKey1 = ref(0)
@@ -145,6 +150,15 @@ export default {
               this.$store.commit("saveSchoolAccess", true) //updates variable in store to share user hhas acces to school forum
               
               //alerts user of forum user is accessing
+          //     $refs.alert.showAlert(
+          //   'success', // There are 4 types of alert: success, info, warning, error
+          //   'This is the information of something you may know Success.', // Message of the alert
+          //   'Success 200', // Header of the alert
+          //   { iconSize: 35, // Size of the icon (px)
+          //     iconType: 'solid', // Icon styles: now only 2 styles 'solid' and 'regular'
+          //     position: 'top right' } // Position of the alert 'top right', 'top left', 'bottom left', 'bottom right'
+          // )
+          this.$refs.showAlert('success', "Welcome", "header", {iconSize: 35, iconType: 'solid', position: 'top right'})
               alert("You are in range of our " + school +  " chatroom!")
 
             } else {
@@ -203,7 +217,10 @@ header img {
   width: 64px;
   height: 64px;
   float: left;
-  padding: 1px;
+}
+
+img.logo {
+  margin-top: 0em;
 }
 
 h3 {
@@ -230,8 +247,8 @@ header h2 {
 }
 .app-header {
   display: block;
-  background: rgb(0,128,128);
-  background: linear-gradient(335deg, rgba(0,128,128,1) 0%, rgba(0,0,0,1) 100%);
+  background: rgb(202, 100, 57);
+  background: linear-gradient(335deg, rgb(148, 148, 148) 0%, rgb(63, 61, 60) 100%);
   position: fixed;
   top: 0;
   left: 0;
@@ -285,7 +302,7 @@ header {
   z-index: 10;
 }
 header a {
-  color: teal;
+  color: #cf3e45
 }
 
 .logo {

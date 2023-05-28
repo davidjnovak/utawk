@@ -14,6 +14,12 @@ import { useStore } from 'vuex'
 
 const store = useStore() //creates variable to access vuex store
 const currentCollection = store.getters.getSchoolName //gets school's database collection name variable from store 
+// const primarycolor = store.getters.getPrimaryColor
+// const secondarycolor = store.getters.getSecondaryColor
+// const accentcolor = store.getters.getAccentColor
+const primaryColor = ref("#25BCA2")
+const secondaryColor = ref("#0E6E5E")
+const accentColor = ref("#79E4A4")
 const newPostText = ref('')
 const posts = ref([])
 const cooldown = ref(false)
@@ -137,7 +143,6 @@ const setCooldown = () => {
 }
 
 const verifyPost = (text: string | any[]) => {
-  // check for hate speech and whatnot
   if (text.length == 0){
     return false
   }
@@ -210,7 +215,7 @@ const addPost = () => {
                                     <div><a href="#" data-abc="true"><span class="w-48 avatar gradientavi">{{upperCase(displayName).substring(0,1)}}</span></a></div>
                                     <div class="flex">
                                         <div class="timestamp">tawked {{format(timeCreated, 'en_US')}}</div>
-                                        <a v-if="Cookies.get('id') == displayName" href=# @click="mention(displayName)" class="item-author text-color2" data-abc="true">{{displayName}}</a>
+                                        <a v-if="Cookies.get('id') == displayName" href=# @click="mention(displayName)" class="item-author posted-text-color" data-abc="true">{{displayName}}</a>
                                         <a v-else @click="mention(displayName)" href=# class="item-author text-color" data-abc="true">{{displayName}}</a>
                                         <div class="item-except text-muted text-sm h-1x">{{text}}</div>
                                     </div>
@@ -248,6 +253,13 @@ const addPost = () => {
 <style scoped>
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
 
+:root{
+/* --primarycolor: #25BCA2;
+--secondarycolor: #0E6E5E;
+--accentcolor: #79E4A4; */
+}
+
+
 footer{
     position: fixed;
     bottom: 1%;
@@ -270,8 +282,8 @@ footer{
     }
 }
 
-.text-color2 {
-    color: teal;
+.posted-text-color {
+    color: v-bind(primaryColor);
     font-weight: bold;
 }
 .yourpostrow .yourposts{
@@ -385,9 +397,9 @@ body {
 
 
 .gradientavi {
-    color: rgb(255, 255, 255);
+    color: white;
     border: none;
-    background: #fefefe linear-gradient(50deg, teal, rgb(110, 183, 110))
+    background: #fefefe linear-gradient(50deg, var(--primarycolor), v-bind(primaryColor))
 }
 
 
@@ -577,7 +589,7 @@ a:link{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: teal;
+    background-color: rgb(101, 101, 101);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -595,11 +607,11 @@ a:link{
 }
 
 input:checked + .slider {
-    background-color: teal;
+    background-color: rgb(118, 118, 118);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px teal;
+    box-shadow: 0 0 1px rgb(216, 215, 215);
 }
 
 input:checked + .slider:before {
@@ -621,7 +633,7 @@ input:checked + .slider:before {
     position: absolute;
     margin-left: 90px;
     margin-top: 18px;
-    color: teal;
+    color: v-bind(accentColor);
 }
 
 .padding .recent {
@@ -906,7 +918,7 @@ input:checked + .slider:before {
   justify-content: space-between;
 }
 .bottom .post{
-  background-color: rgb(4, 112, 107);
+  background-color: #cc8446;
   border-radius: 20px;
   border: 0;
   box-sizing: border-box;
@@ -917,7 +929,7 @@ input:checked + .slider:before {
   height: 35px;
   margin-top: 1px;
   margin-bottom: 1px;
-  text-align: center;
+  text-align: center; 
   width: 25%;
 }
 .post:active {
