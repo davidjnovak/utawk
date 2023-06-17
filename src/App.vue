@@ -272,49 +272,21 @@ nav .server h4 {
 }
 
 @media only screen and (max-width: 520px) {
-  header h4 {
-    font-size: 10px;
-    margin-right: 1em;
-    width: 100px;
-    margin-top: -28px;
-  }
-
   .animate-charcter {
     display: none;
   }
 
-  .app-header {
-    height: 48px;
+  nav .logo {
+    margin-right: auto;
   }
-
-  header img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .mainpage {
-    margin: 0px;
-    width: 100px;
-  }
-
-  footer {
-    min-width: 100vh;
-  }
-
 }
 
 @media only screen and (max-width: 900px) and (min-width: 521px) {
-  h4 {
-    font-size: 12px;
-  }
+
 
   .animate-charcter {
     font-size: 35px;
     margin-top: 6px;
-  }
-
-  nav {
-    font-size: 8px;
   }
 }
 

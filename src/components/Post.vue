@@ -189,78 +189,71 @@ const addPost = () => {
 
 <template>
     <main>
-
-        <body class="mainpage">
+        <div class="mainpage">
             <div class="page-content page-container" id="page-content">
-                <div class="padding">
-                    <div class="flip">
-                        <h3 class="trending">🔥</h3>
-                        <h3 class="recent">🕑</h3>
+                <div class="flip">
+                    <div class="switch-sort-type">
+                        <h3 class="trending">🔥 Trending</h3>
                         <label class="switch">
-                            <input type="checkbox" @click="changeSort">
+                            <input type="checkbox" @click="changeSort" checked>
                             <span class="slider round"></span>
                         </label>
-                        <div class="row">
-                            <div class="list list-row block">
-                                <div class="list-item"
-                                    v-for="{ id, text, displayName, votes, upvoters, downvoters, timeCreated, postReplies } in posts"
-                                    :key="id">
-                                    <table class="votetable">
-                                        <tr>
-                                            <td class="uptd"><button class="upvote" @click="upvote(id, votes)">🔼</button>
-                                            </td>
-                                            <td class="countbox">
-                                                <div class="count">{{ votes }}</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="downtd"><button class="downvote"
-                                                    @click="downvote(id, votes)">🔽</button></td>
-                                            <td></td>
-                                        </tr>
-                                    </table>
-                                    <div><a href="#" data-abc="true"><span class="w-48 avatar gradientavi">{{
-                                        upperCase(displayName).substring(0, 1) }}</span></a>
-                                    </div>
-                                    <div class="flex">
-                                        <div class="timestamp">tawked {{ format(timeCreated, 'en_US') }}</div>
-                                        <a v-if="Cookies.get('id') == displayName" href=# @click="mention(displayName)"
-                                            class="item-author posted-text-color" data-abc="true">{{ displayName }}</a>
-                                        <a v-else @click="mention(displayName)" href=# class="item-author text-color"
-                                            data-abc="true">{{ displayName }}</a>
-                                        <div class="item-except text-muted text-sm h-1x">{{ text }}</div>
-                                    </div>
-                                    <div class="no-wrap">
-                                    </div>
+                        <h3 class="recent">🕑 Recent</h3>
+                    </div>
+                    <div class="row">
+                        <TransitionGroup class="list list-row block" name="list" tag="div" appear>
+                            <div class="list-item"
+                                v-for="{ id, text, displayName, votes, upvoters, downvoters, timeCreated, postReplies } in posts"
+                                :key="id">
+                                <div class="votediv">
+                                    <button class="upvote" @click="upvote(id, votes)">
+                                        <img src="@/assets/arrow-up.png" alt="">
+                                    </button>
+                                    <div class="count">{{ votes }}</div>
+                                    <button class="downvote" @click="downvote(id, votes)">
+                                        <img src="@/assets/arrow-down.png" alt="">
+                                    </button>
+                                </div>
+                                <div><a href="#" data-abc="true"><span class="w-48 avatar gradientavi">{{
+                                    upperCase(displayName).substring(0, 1) }}</span></a>
+                                </div>
+                                <div class="flex">
+                                    <div class="timestamp">tawked {{ format(timeCreated, 'en_US') }}</div>
+                                    <a v-if="Cookies.get('id') == displayName" href=# @click="mention(displayName)"
+                                        class="item-author posted-text-color" data-abc="true">{{ displayName }}</a>
+                                    <a v-else @click="mention(displayName)" href=# class="item-author text-color"
+                                        data-abc="true">{{ displayName }}</a>
+                                    <div class="item-except text-muted text-sm h-1x">{{ text }}</div>
+                                </div>
+                                <div class="no-wrap">
                                 </div>
                             </div>
-                            <footer v-if="currentAccess == true">
-                                <!-- This line checks store's variable, if user has acess to school forum then they are able to see posting box and post to forum-->
-                                <main>
-                                    <div class="new-post-box">
-                                        <div class="input-container ic1">
-                                            <textarea @keydown.enter.exact.prevent="addPost" id="post" class="input"
-                                                placeholder=" " v-model="newPostText" maxlength=120></textarea>
-                                            <label for="post" class="placeholder">Tawk Here</label>
-                                            <EmojiPicker disable-skin-tones="true" hide-search="true" theme="dark"
-                                                class="picker" v-if="emojiToggle" :native="true" @select="onSelectEmoji">
-                                            </EmojiPicker>
-                                            <div class="charlimit">{{ 120 - newPostText.length }} Characters Remaining</div>
-                                        </div>
-                                        <div class="bottom">
-                                            <button class="emojiButton" @click="toggleEmoji()"></button>
-                                            <button type="submit" class="post" id="post" @click="addPost">Post</button>
-                                        </div>
+                        </TransitionGroup>
+                        <footer v-if="currentAccess == true">
+                            <!-- This line checks store's variable, if user has acess to school forum then they are able to see posting box and post to forum-->
+                            <main>
+                                <div class="new-post-box">
+                                    <div class="input-container ic1">
+                                        <textarea @keydown.enter.exact.prevent="addPost" id="post" class="input"
+                                            placeholder=" " v-model="newPostText" maxlength=120></textarea>
+                                        <label for="post" class="placeholder">Tawk Here</label>
+                                        <EmojiPicker disable-skin-tones="true" hide-search="true" theme="dark"
+                                            class="picker" v-if="emojiToggle" :native="true" @select="onSelectEmoji">
+                                        </EmojiPicker>
+                                        <div class="charlimit">{{ 120 - newPostText.length }} Characters Remaining</div>
                                     </div>
+                                    <div class="bottom">
+                                        <button class="emojiButton" @click="toggleEmoji()"></button>
+                                        <button type="submit" class="post" id="post" @click="addPost">Post</button>
+                                    </div>
+                                </div>
 
-                                </main>
-
-                            </footer>
-                        </div>
+                            </main>
+                        </footer>
                     </div>
                 </div>
             </div>
-        </body>
+        </div>
     </main>
 </template>
 
@@ -331,9 +324,9 @@ footer {
 }
 
 .mainpage {
-    margin: 5em auto;
+    margin: 1em auto;
     width: 90%;
-    margin-bottom: 180px;
+    margin-bottom: 1rem !important;
 }
 
 body {
@@ -423,6 +416,20 @@ body {
     background: #fefefe linear-gradient(50deg, var(--primarycolor), v-bind(primaryColor))
 }
 
+.switch-sort-type {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin-left: auto;
+    margin-bottom: 1rem;
+}
+
+.switch-sort-type h3 {
+    color: white;
+    font-weight: 300;
+    font-size: 0.9rem;
+}
+
 
 @media (min-width:992px) {
     .page-container {
@@ -438,19 +445,21 @@ body {
 
 .list {
     padding-left: 0;
-    padding-right: 0
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
 }
 
 .list-item {
     position: relative;
+    background: #303030;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    animation: fadeInAnimation ease 3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .user-list-item {
@@ -526,19 +535,6 @@ a:link {
     text-decoration: none;
 }
 
-.upvote {
-    font-size: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-
-}
-
-.upvotePressed {
-    font-size: 22px;
-    background-color: rgb(39, 208, 39);
-    border-radius: 50px;
-}
 
 .count {
     font-family: Helvetica;
@@ -553,31 +549,35 @@ a:link {
     text-align: center;
 }
 
+.upvote,
 .downvote {
-    font-size: 20px;
     background: none;
     border: none;
     cursor: pointer;
+    opacity: 0.2;
+    transition: 0.3s all;
 }
 
+.upvote img,
+.downvote img {
+    height: 25px;
+    width: 25px;
+    object-fit: contain;
+    filter: invert();
+}
+
+.upvote:hover,
 .downvote:hover {
-    background-color: rgb(186, 83, 83);
-    border-radius: 50px;
+    opacity: 1;
 }
 
+.upvote:active,
+.upvote:focus,
 .downvote:active,
 .downvote:focus {
-    border-radius: 50px;
+    outline: 1px solid blue;
 }
 
-.upvote:hover {
-    background-color: rgb(106, 180, 106);
-    border-radius: 50px;
-}
-
-.upvote:focus {
-    border-radius: 50px;
-}
 
 @keyframes bump {
     30% {
@@ -585,32 +585,12 @@ a:link {
     }
 }
 
-.votetable,
-tr,
-td {
-    border: 1px solid;
-    color: rgba(255, 255, 255, 0);
-
-}
-
-.votetable {
-    width: 105px;
-
-}
-
-
-.uptd,
-.downtd {
-    width: 32px;
-}
-
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin: 1em;
-    margin-left: 27px;
+    width: 40px;
+    height: 25px;
+    margin: 10px;
 }
 
 .switch input {
@@ -626,7 +606,8 @@ td {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(101, 101, 101);
+    background-color: #F7630C;
+    border: none;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -634,27 +615,27 @@ td {
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
+    height: 19px;
+    width: 19px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #372c26;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 input:checked+.slider {
-    background-color: rgb(118, 118, 118);
+    background-color: rgb(90, 93, 108);
 }
 
-input:focus+.slider {
-    box-shadow: 0 0 1px rgb(216, 215, 215);
+input:checked+.slider::before {
+    background-color: rgb(19, 21, 32);
 }
 
 input:checked+.slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
 }
 
 /* Rounded sliders */
@@ -664,23 +645,6 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
-}
-
-.padding h3 {
-    position: absolute;
-    margin-left: 90px;
-    margin-top: 18px;
-    color: v-bind(accentColor);
-}
-
-.padding .recent {
-    font-size: 20px;
-    margin-left: 0;
-}
-
-.padding .trending {
-    margin-right: 0px;
-    font-size: 20px;
 }
 
 .timestamp {
@@ -707,73 +671,12 @@ input:checked+.slider:before {
         padding-right: .3rem
     }
 
-    .votetable {
-        width: 84px;
-    }
-
-    .uptd,
-    .downtd {
-        width: 16px;
-    }
-
     .flex {
         width: 240px;
     }
 
     .emojiButton {
         display: none;
-    }
-
-    .switch {
-        width: 30px;
-        height: 17px;
-        margin: 1em;
-        margin-top: 4em;
-        margin-left: 37px;
-    }
-
-    .slider:before {
-        height: 13px;
-        width: 13px;
-        left: 2px;
-        bottom: 2px;
-    }
-
-    .slider.round {
-        border-radius: 17px;
-    }
-
-    input:checked+.slider:before {
-        -webkit-transform: translateX(13px);
-        -ms-transform: translateX(13px);
-        transform: translateX(13px);
-    }
-
-    .padding h3 {
-        position: absolute;
-        margin-left: 70px;
-        margin-top: 4.3em;
-        color: teal;
-        font-size: 10px;
-    }
-
-    .padding .recent {
-        font-size: 13px;
-        margin-left: 18px;
-    }
-
-    .padding .trending {
-        margin-right: 0px;
-        font-size: 13px;
-    }
-
-    .padding .Trending {
-        margin-left: 140px;
-    }
-
-    h3.recent {
-        font-size: 10px;
-        margin-left: 40px;
     }
 
     .w-48 {
@@ -808,6 +711,9 @@ input:checked+.slider:before {
         /* relative to the text size */
     }
 
+    .switch-sort-type {
+        margin: auto;
+    }
 
 }
 
@@ -999,5 +905,21 @@ input:checked+.slider:before {
 .charlimit {
     font-size: smaller;
     color: #555555;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+.list-leave-active {
+    position: absolute;
 }
 </style>
