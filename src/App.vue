@@ -36,13 +36,17 @@
 
     </header>
 
-    <RouterView />
+    <router-view v-slot="{ Component }">
+      <transition :name="$route.meta.transition || 'fade'" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
 
   </div>
 </template>
 
 <script lang="js">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 import { closest, schoolList } from './classes/distance.js'
 import { ref } from 'vue'
 import VueBasicAlert from 'vue-basic-alert'
@@ -387,5 +391,48 @@ body {
   100% {
     transform: translateY(0) rotate(-45deg);
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.2s;
+}
+
+.slide-right-enter-from {
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.slide-right-leave-to {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all 0.2s;
+}
+
+.slide-left-enter-from {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.slide-left-leave-to {
+  transform: translateX(-100px);
+  opacity: 0;
 }
 </style>
