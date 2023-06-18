@@ -193,12 +193,6 @@ const addPost = () => {
             <div class="page-content page-container" id="page-content">
                 <div class="flip">
                     <div class="switch-sort-type">
-                        <h3 class="trending">🔥 Trending</h3>
-                        <label class="switch">
-                            <input type="checkbox" @click="changeSort" checked>
-                            <span class="slider round"></span>
-                        </label>
-                        <h3 class="recent">🕑 Recent</h3>
                     </div>
                     <div class="row">
                         <TransitionGroup class="list list-row block" name="list" tag="div" appear>

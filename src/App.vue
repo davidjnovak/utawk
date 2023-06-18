@@ -3,17 +3,10 @@
   <div v-if="location.access == false">
 
     <!-- This conditional is mased on initialized values so it appears automatically when loading into the page -->
-    <main v-if="coordinates.lat == 0 && coordinates.lng == 0" class="local">
-      <!--<h2>Please allow location to access uTawk</h2>-->
+    <main v-if="coordinates.lng == 0" class="local">
       <div class="pin"></div>
       <div class="pulse"></div>
     </main>
-
-    <!-- This conditional is met if the user denies the webpage access to their location -->
-    <main v-else-if="coordinates.lat == 1 && coordinates.lng == 0" class="local">
-      <h2>DENIED ACCESS: Please refresh page and allow location to access uTawk</h2>
-    </main>
-
   </div>
 
   <!--This div is the actual forum and any other potential views to be used once the user allows the webpage access to their location -->
@@ -22,14 +15,16 @@
       <vue-basic-alert :duration="100" :closeIn="900" ref="alert" />
 
       <nav>
-        <img alt="Vue logo" class="logo" src="@/assets/uTawkLogo.png" width="125" height="125" />
-        <h3 class="animate-charcter">uTawk</h3>
+        <img alt="logo" class="logo" src="@/assets/uTawkLogo.png" width="200" height="200" />
+        <h3 class="animate-charcter"></h3>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <!-- These conditionals and html show to the user which school forum they're in and if they're in view only mode or not -->
         <div class="server">
           <img src="@/assets/server.png" alt="">
-          <h4 v-if="this.school.access == true" :key="componentKey1">Tawking in {{ this.school.name }}</h4>
+          
+          <h4 v-if="this.school.access == true" :key="componentKey1">Tawking in {{ this.school.name }}
+          </h4>
           <h4 v-else :key="componentKey2">Watching {{ this.school.name }}</h4>
         </div>
       </nav>
@@ -225,8 +220,9 @@ nav {
 }
 
 nav img {
-  width: 40px;
-  height: 40px;
+  right: 200px;
+  width: 80px;
+  height: 80px;
 }
 
 img.logo {
@@ -281,7 +277,7 @@ nav .server h4 {
   }
 
   nav .logo {
-    margin-right: auto;
+    margin-right: 50px;
   }
 }
 
