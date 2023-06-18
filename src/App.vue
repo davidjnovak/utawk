@@ -1,51 +1,53 @@
 <template>
-  
   <!--This template is for the welcome page-->
-  <template v-if="location.access == false"> 
+  <div v-if="location.access == false">
 
     <!-- This conditional is mased on initialized values so it appears automatically when loading into the page -->
     <main v-if="coordinates.lat == 0 && coordinates.lng == 0" class="local">
-        <!--<h2>Please allow location to access uTawk</h2>-->
-          <div class="pin"></div>
-          <div class="pulse"></div>
-    </main> 
+      <!--<h2>Please allow location to access uTawk</h2>-->
+      <div class="pin"></div>
+      <div class="pulse"></div>
+    </main>
 
     <!-- This conditional is met if the user denies the webpage access to their location -->
     <main v-else-if="coordinates.lat == 1 && coordinates.lng == 0" class="local">
-        <h2>DENIED ACCESS: Please refresh page and allow location to access uTawk</h2>
+      <h2>DENIED ACCESS: Please refresh page and allow location to access uTawk</h2>
     </main>
 
-  </template>
-  
-  <!--This template is the actual forum and any other potential views to be used once the user allows the webpage access to their location -->
-  <template v-else-if="location.access == true">
-       <header id ="app-header" class="app-header">
-        <vue-basic-alert 
-       :duration="100"
-       :closeIn="900"
-       ref="alert" />
-       
+  </div>
+
+  <!--This div is the actual forum and any other potential views to be used once the user allows the webpage access to their location -->
+  <div v-else-if="location.access == true">
+    <header id="app-header" class="app-header">
+      <vue-basic-alert :duration="100" :closeIn="900" ref="alert" />
+
+      <nav>
         <img alt="Vue logo" class="logo" src="@/assets/uTawkLogo.png" width="125" height="125" />
         <h3 class="animate-charcter">uTawk</h3>
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
         <!-- These conditionals and html show to the user which school forum they're in and if they're in view only mode or not -->
-        <h4 v-if="this.school.access == true" :key="componentKey1">Tawking in {{this.school.name}}</h4>
-        <h4 v-else :key="componentKey2">Watching {{this.school.name}}</h4>
-      
-      </header>
+        <div class="server">
+          <img src="@/assets/server.png" alt="">
+          <h4 v-if="this.school.access == true" :key="componentKey1">Tawking in {{ this.school.name }}</h4>
+          <h4 v-else :key="componentKey2">Watching {{ this.school.name }}</h4>
+        </div>
+      </nav>
 
-      <RouterView />
+    </header>
 
-  </template>
+    <router-view v-slot="{ Component }">
+      <transition :name="$route.meta.transition || 'fade'" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
 
+  </div>
 </template>
 
 <script lang="js">
-import { RouterLink, RouterView } from 'vue-router'
-import {closest, schoolList} from './classes/distance.js'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
+import { closest, schoolList } from './classes/distance.js'
 import { ref } from 'vue'
 import VueBasicAlert from 'vue-basic-alert'
 
@@ -60,96 +62,96 @@ const forceRerender = () => {
 }
 
 export default {
-    data() {
-        return {
-          //initializing user coordinate data
-            coordinates: {
-                lat: 0,
-                lng: 0
-            },
-            //initializing school info data
-            school: {
-                access: false,
-                name: "nada"
-            },
-            //initializing access to users location data
-            location: {
-              access: false
-            },
-            //initializing keys for updating html
-            componentKey1: 0,   
-            componentKey2: 0         
-        }
-    },
-    //initializing function for updating school info in html
-    methods: {
-      forceRerender() {
-        this.componentKey1 += 1,
-        this.componentKey2 += 1
+  data() {
+    return {
+      //initializing user coordinate data
+      coordinates: {
+        lat: 0,
+        lng: 0
       },
+      //initializing school info data
+      school: {
+        access: false,
+        name: "nada"
+      },
+      //initializing access to users location data
+      location: {
+        access: false
+      },
+      //initializing keys for updating html
+      componentKey1: 0,
+      componentKey2: 0
+    }
+  },
+  //initializing function for updating school info in html
+  methods: {
+    forceRerender() {
+      this.componentKey1 += 1,
+        this.componentKey2 += 1
     },
-    created() {
-        //when page loads it automatically asks user for location access
-        this.$getLocation({})
+  },
+  created() {
+    //when page loads it automatically asks user for location access
+    this.$getLocation({})
 
-            //this code runs of the user does allow the webpage to access their location
-            .then((coordinates) => {
-            
-            this.location.access = true //updates variable to let page know we have access to users location
-          
-            this.coordinates = coordinates //this saves the coordinates retrived from $getlocation to intial variables
+      //this code runs of the user does allow the webpage to access their location
+      .then((coordinates) => {
 
-            //all this code is for testing different coordinate locations besides users current location
-            //-----------------------------------------------------------------------------------------//
-            //COORDINATES FOR INSIDE UNCW
-            
-            // this.coordinates.lat = 34.2239
-            // this.coordinates.lng = -77.8696
+        this.location.access = true //updates variable to let page know we have access to users location
 
-            //COORDINATES FOR INSIDE APP STATE
+        this.coordinates = coordinates //this saves the coordinates retrived from $getlocation to intial variables
 
-            //this.coordinates.lat = 36.2136
-            //this.coordinates.lng = -81.6843
+        //all this code is for testing different coordinate locations besides users current location
+        //-----------------------------------------------------------------------------------------//
+        //COORDINATES FOR INSIDE UNCW
 
-            //COORDINATES FOR OUTSIDE OF APP STATE
+        // this.coordinates.lat = 34.2239
+        // this.coordinates.lng = -77.8696
 
-            //this.coordinates.lat = 36.0
-            //this.coordinates.lng = -81.0
+        //COORDINATES FOR INSIDE APP STATE
 
-            //COORDINATES FOR INSIDE NC STATE
+        //this.coordinates.lat = 36.2136
+        //this.coordinates.lng = -81.6843
 
-            //this.coordinates.lat = 35.7847
-            //this.coordinates.lng = -78.6821
+        //COORDINATES FOR OUTSIDE OF APP STATE
 
-            //COORDINATES FOR OUTSIDE OF NC STATE
+        //this.coordinates.lat = 36.0
+        //this.coordinates.lng = -81.0
 
-            //this.coordinates.lat = 35.7
-            //this.coordinates.lng = -78.6
-            //-----------------------------------------------------------------------------------------//
+        //COORDINATES FOR INSIDE NC STATE
+
+        //this.coordinates.lat = 35.7847
+        //this.coordinates.lng = -78.6821
+
+        //COORDINATES FOR OUTSIDE OF NC STATE
+
+        //this.coordinates.lat = 35.7
+        //this.coordinates.lng = -78.6
+        //-----------------------------------------------------------------------------------------//
 
 
-            //variables for checking user distance
-            let setRadius = 3 //change this value to set radius to be able to chat 
-            let values = closest(schoolList, this.coordinates.lat, this.coordinates.lng) //usses function that determines the closest school to the user
+        //variables for checking user distance
+        let setRadius = 3 //change this value to set radius to be able to chat 
+        let values = closest(schoolList, this.coordinates.lat, this.coordinates.lng) //usses function that determines the closest school to the user
 
-            //variables for saving and share with webpage from previous closest function
-            const school = values[0]         //saves school name from previous "closest"
-            const userDis = values[1]        //saves users distance to closest school
-            const collectionName = values[2] //saves name of the closest schools datapase collection
+        //variables for saving and share with webpage from previous closest function
+        const school = values[0]         //saves school name from previous "closest"
+        const userDis = values[1]        //saves users distance to closest school
+        const collectionName = values[2] //saves name of the closest schools datapase collection
 
-            //saving and sharing school name to webpage
-            this.school.name = school  //variable for school name
-            this.$store.commit("saveSchoolName", collectionName) //storing school name into store that the webpage has access to
+        //saving and sharing school name to webpage
+        this.school.name = school  //variable for school name
+        this.$store.commit("saveSchoolName", collectionName) //storing school name into store that the webpage has access to
 
-            //calls function that updates school info in html
-            forceRerender 
+        //calls function that updates school info in html
+        forceRerender
 
-            //this line checks if the users distance to the closest school is close enough to actually chat in the forum, right now its "1 mile" 
-            if (userDis < setRadius) {
-              this.school.access = true //updates variable for knowing if user is close enough to access forum
-              this.$store.commit("saveSchoolAccess", true) //updates variable in store to share user hhas acces to school forum
-              
-              //alerts user of forum user is accessing
+        //this line checks if the users distance to the closest school is close enough to actually chat in the forum, right now its "1 mile" 
+        if (userDis < setRadius) {
+          this.school.access = true //updates variable for knowing if user is close enough to access forum
+          this.$store.commit("saveSchoolAccess", true) //updates variable in store to share user hhas acces to school forum
+
+          //alerts user of forum user is accessing
           //     $refs.alert.showAlert(
           //   'success', // There are 4 types of alert: success, info, warning, error
           //   'This is the information of something you may know Success.', // Message of the alert
@@ -158,28 +160,27 @@ export default {
           //     iconType: 'solid', // Icon styles: now only 2 styles 'solid' and 'regular'
           //     position: 'top right' } // Position of the alert 'top right', 'top left', 'bottom left', 'bottom right'
           // )
-          this.$refs.showAlert('success', "Welcome", "header", {iconSize: 35, iconType: 'solid', position: 'top right'})
-              alert("You are in range of our " + school +  " chatroom!")
+          this.$refs.showAlert('success', "Welcome", "header", { iconSize: 35, iconType: 'solid', position: 'top right' })
+          alert("You are in range of our " + school + " chatroom!")
 
-            } else {
-              this.$store.commit("saveSchoolAccess", false) //makes sure html is updated properly if some sort of location spoofing takes place
+        } else {
+          this.$store.commit("saveSchoolAccess", false) //makes sure html is updated properly if some sort of location spoofing takes place
 
-              //alerts user of forum user is closest too and currently viewing
-              alert("The closest chatroom is our " + school + " chatroom, move to chat in this chatroom.")
+          //alerts user of forum user is closest too and currently viewing
+          alert("The closest chatroom is our " + school + " chatroom, move to chat in this chatroom.")
 
-            }
+        }
 
         //this code runs if the user denies the webpage access to their location
-        }).catch(() => {
-            this.coordinates.lat = 1
-        })
-    }
+      }).catch(() => {
+        this.coordinates.lat = 1
+      })
+  }
 }
 
 </script>
 
 <style scoped>
-
 main {
   min-height: 100vh;
 }
@@ -189,7 +190,7 @@ main {
   color: rgb(252, 252, 99);
   margin-top: 20%;
   -webkit-animation: pulsate 3s ease-out;
-  -webkit-animation-iteration-count: infinite; 
+  -webkit-animation-iteration-count: infinite;
   opacity: 0.5;
   font-size: 30px;
   text-transform: uppercase;
@@ -197,159 +198,102 @@ main {
   letter-spacing: 0.02em;
   text-shadow: 0 1px 0 #ccc,
 }
+
 @-webkit-keyframes pulsate {
-    0% { 
-        opacity: 0.5;
-    }
-    50% { 
-        opacity: 1.0;
-    }
-    100% { 
-        opacity: 0.5;
-    }
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1.0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
 }
 
+header {}
 
-header img {
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 40px;
-  width: 64px;
-  height: 64px;
-  float: left;
+nav {
+  display: flex;
+  align-items: center;
+  width: clamp(280px, 90%, 1280px);
+  margin: auto;
+  padding: 0;
+  height: 4rem;
+}
+
+nav img {
+  width: 40px;
+  height: 40px;
 }
 
 img.logo {
-  margin-top: 0em;
+  margin: 0;
 }
 
 h3 {
-  font-size: 2.6rem;
-  top: 0px;
-  float: left;
-  font-weight: bold;
-  text-transform: uppercase;
-  background-clip: border-box;
-  color: #fff;
-  display: inline-block;
+  font-size: 2rem;
+  font-weight: 300;
+  color: white;
+  margin-right: auto;
 }
 
-header h2 {
-  font-weight: 50;
-  font-size: 2.6rem;
-  float: center;
-  font-weight: bold;
-  position: relative;
-  top: 50px;
-  left: 50px;
-  color: rgb(1, 84, 84);
-  text-align: center;
-}
-.app-header {
-  display: block;
-  background: rgb(202, 100, 57);
-  background: linear-gradient(335deg, rgb(148, 148, 148) 0%, rgb(63, 61, 60) 100%);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  color: #fff;
-  height: 64px;
-  box-shadow: 20px 20px 50px rgba(0,0,0,0);
-  border-bottom: 0px solid black;
-}
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-header h4{
-  float: right;
-  width: 15%;
-  margin: -35px 0 0 0;
-  font-style: italic;
-  
-}
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+nav a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.5s all ease;
+  font-weight: 500;
+  margin-right: 1rem;
 }
 
-nav {
-  font-size: 12px;
-  padding: 17px;
-  
-}
-nav a.router-link-exact-active {
+nav a:hover {
   color: white;
 }
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid white;
-  font-weight: bold;
-}
-nav a:first-of-type {
-  border: 0;
+
+nav a.router-link-exact-active {
+  color: red;
 }
 
-header {
+nav .server {
   display: flex;
-  place-items: top;
-  padding-right: calc(var(--section-gap) / 2);
-  z-index: 10;
-}
-header a {
-  color: #cf3e45
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
 }
 
-.logo {
-  margin: 0.75em 2rem 2em 2em;
+nav .server img {
+  filter: invert();
+  height: 20px;
+  object-fit: contain;
 }
+
+nav .server h4 {
+  color: white;
+  font-weight: 300;
+  font-size: 0.6rem;
+}
+
 @media only screen and (max-width: 520px) {
-  header h4 {
-    font-size: 10px;
-    margin-right: 1em;
-    width: 100px;
-    margin-top: -28px;
-  }
   .animate-charcter {
     display: none;
   }
-  .app-header {
-    height: 48px;
-  }
-  header img {
-    width: 48px;
-    height: 48px;
-  }
-  nav {
-    padding: 10px;
-    margin-top: 6px;
-  }
-  .mainpage {
-    margin: 0px;
-    width: 100px;
-  }
-  footer {
-    min-width: 100vh;
-  }
 
-}
-@media only screen and (max-width: 900px) and (min-width: 521px) {
-  h4 {
-    font-size: 12px;
+  nav .logo {
+    margin-right: auto;
   }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 521px) {
+
+
   .animate-charcter {
     font-size: 35px;
     margin-top: 6px;
   }
-  nav {
-    font-size: 8px;
-  }
 }
+
 body {
   background: #e6e6e6;
 }
@@ -371,6 +315,7 @@ body {
   animation-fill-mode: both;
   animation-duration: 1s;
 }
+
 .pin:after {
   content: "";
   width: 28px;
@@ -395,6 +340,7 @@ body {
   margin: 22px 0px 0px -24px;
   z-index: -2;
 }
+
 .pulse:after {
   content: "";
   border-radius: 50%;
@@ -447,5 +393,46 @@ body {
   }
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s;
+}
 
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all 0.2s;
+}
+
+.slide-right-enter-from {
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.slide-right-leave-to {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all 0.2s;
+}
+
+.slide-left-enter-from {
+  transform: translateX(100px);
+  opacity: 0;
+}
+
+.slide-left-leave-to {
+  transform: translateX(-100px);
+  opacity: 0;
+}
 </style>
