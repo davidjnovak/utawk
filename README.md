@@ -24,11 +24,6 @@ To get started with uTawk, follow these steps:
 
 We welcome contributions from the community. If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code as per the license terms.
-
-
 ## Project Setup
 
 ```sh
