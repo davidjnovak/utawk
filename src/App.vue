@@ -42,7 +42,9 @@
 
 <script lang="js">
 import { RouterLink, RouterView, useRouter } from 'vue-router'
-import { closest, schoolList } from './classes/distance.js'
+import { closest } from './utilities/distance.js'
+import { collections } from './utilities/collections.js';
+
 import { ref } from 'vue'
 import VueBasicAlert from 'vue-basic-alert'
 
@@ -88,8 +90,6 @@ export default {
   created() {
     //when page loads it automatically asks user for location access
     this.$getLocation({})
-
-      //this code runs of the user does allow the webpage to access their location
       .then((coordinates) => {
 
         this.location.access = true //updates variable to let page know we have access to users location
@@ -115,8 +115,8 @@ export default {
 
         //COORDINATES FOR INSIDE NC STATE
 
-        //this.coordinates.lat = 35.7847
-        //this.coordinates.lng = -78.6821
+        // this.coordinates.lat = 35.7847
+        // this.coordinates.lng = -78.6821
 
         //COORDINATES FOR OUTSIDE OF NC STATE
 
@@ -126,8 +126,8 @@ export default {
 
 
         //variables for checking user distance
-        let setRadius = 3 //change this value to set radius to be able to chat 
-        let values = closest(schoolList, this.coordinates.lat, this.coordinates.lng) //usses function that determines the closest school to the user
+        let setRadius = 100 //change this value to set radius to be able to chat 
+        let values = closest(collections, this.coordinates.lat, this.coordinates.lng) //usses function that determines the closest school to the user
 
         //variables for saving and share with webpage from previous closest function
         const school = values[0]         //saves school name from previous "closest"

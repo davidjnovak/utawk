@@ -1,19 +1,14 @@
-/*This class stores school information and functions that make the location algortim work
-to find the closest school to the user. The appropriate information is returned for the webpage 
-to update accordingly.*/
+import { collections } from './collections.js';
 
-//this is the school information list, only 3 schools are in use as of right now
-export const schoolList =
+export const schoolList = 
     [["UNCW", 34.2239, -77.8696, "uncwposts"],
      ["NC State", 35.7847, -78.6821, "ncstateposts"],
-     ["App State", 36.2136, -81.6843, "appstateposts"]]
+     ["App State", 36.2136, -81.6843, " "]]
 
 
 //this function talkes in a list of schools and the users coordinates
 //the list being used is in this file but can easily be moved to another and updates to contain more schools
 export function closest(list, userLat, userLng) {
-
-    //seting variables for finding cloesest school and distance to it
     let userDis = 100000000 //initialy large number to find the lowest distance between user and school
     var userSchool = ""     //initializing string for closest school to user
     var collectionName = "" //initializing string for database collection name for closest school
@@ -21,11 +16,11 @@ export function closest(list, userLat, userLng) {
 
     //iterating through school list
     for (let i = 0; i < list.length; i++) {
-        let currentDis = distance(list[i][1], list[i][2], userLat, userLng)
+        let currentDis = distance(list[i].latitude, list[i].longitude, userLat, userLng)
         if (currentDis < userDis) {
           userDis = currentDis        //saves lowest distance between user and school
-          userSchool = list[i][0]     //saves closest school name 
-          collectionName = list[i][3] //saves closest schools database collection name
+          userSchool = list[i].displayName     //saves closest school name 
+          collectionName = list[i].id //saves closest schools database collection name
         } 
     }
 
