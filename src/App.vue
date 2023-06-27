@@ -56,26 +56,21 @@ const forceRerender = () => {
 export default {
   data() {
     return {
-      //initializing user coordinate data
       coordinates: {
         lat: 0,
         lng: 0
       },
-      //initializing school info data
       school: {
         access: false,
         name: "nada"
       },
-      //initializing access to users location data
       location: {
         access: false
       },
-      //initializing keys for updating html
       componentKey1: 0,
       componentKey2: 0
     }
   },
-  //initializing function for updating school info in html
   methods: {
     forceRerender() {
       this.componentKey1 += 1,
@@ -83,7 +78,6 @@ export default {
     },
   },
   created() {
-    //when page loads it automatically asks user for location access
     this.$getLocation({})
       .then((coordinates) => {
 
