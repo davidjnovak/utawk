@@ -14,12 +14,7 @@ import { useStore } from 'vuex'
 
 const store = useStore() //creates variable to access vuex store
 const currentCollection = store.getters.getSchoolName //gets school's database collection name variable from store 
-// const primarycolor = store.getters.getPrimaryColor
-// const secondarycolor = store.getters.getSecondaryColor
-// const accentcolor = store.getters.getAccentColor
 const primaryColor = ref("#25BCA2")
-const secondaryColor = ref("#0E6E5E")
-const accentColor = ref("#79E4A4")
 const newPostText = ref('')
 const posts = ref([])
 const cooldown = ref(false)

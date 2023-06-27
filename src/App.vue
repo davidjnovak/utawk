@@ -9,7 +9,6 @@
     </main>
   </div>
 
-  <!--This div is the actual forum and any other potential views to be used once the user allows the webpage access to their location -->
   <div v-else-if="location.access == true">
     <header id="app-header" class="app-header">
       <vue-basic-alert :duration="100" :closeIn="900" ref="alert" />
@@ -19,10 +18,8 @@
         <h3 class="animate-charcter"></h3>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <!-- These conditionals and html show to the user which school forum they're in and if they're in view only mode or not -->
         <div class="server">
           <img src="@/assets/server.png" alt="">
-          
           <h4 v-if="this.school.access == true" :key="componentKey1">Tawking in {{ this.school.name }}
           </h4>
           <h4 v-else :key="componentKey2">Watching {{ this.school.name }}</h4>
@@ -48,11 +45,9 @@ import { collections } from './utilities/collections.js';
 import { ref } from 'vue'
 import VueBasicAlert from 'vue-basic-alert'
 
-//component keys are for labeling header portion to update curretn school info to user
 const componentKey1 = ref(0)
 const componentKey2 = ref(0)
 
-//function to actually update the html for school info once the update is needed
 const forceRerender = () => {
   componentKey1.value += 1
   componentKey2.value += 1
