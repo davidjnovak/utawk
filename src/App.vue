@@ -15,14 +15,16 @@
 
       <nav>
         <img alt="logo" class="logo" src="@/assets/uTawkLogo.png" width="200" height="200" />
-        <h3 class="animate-charcter"></h3>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <div class="server">
-          <img src="@/assets/server.png" alt="">
-          <h4 v-if="this.school.access == true" :key="componentKey1">Tawking in {{ this.school.name }}
+          <h4 v-if="this.school.access == true" :key="componentKey1">{{ this.school.name }}
           </h4>
           <h4 v-else :key="componentKey2">Watching {{ this.school.name }}</h4>
+        </div>
+        <div class="wrapper">
+          <div class="pinheader"></div>
+          <div class="pulseheader"></div>
         </div>
       </nav>
 
@@ -201,17 +203,32 @@ header {}
 
 nav {
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: clamp(280px, 90%, 1280px);
-  margin: auto;
   padding: 0;
   height: 4rem;
+  margin-left: -5%;
+  background: linear-gradient(45deg, #333, #555, #333); /* Gradient background */
+  background-size: 200% 200%;
+  animation: back 10s ease-in-out infinite;
 }
 
+@keyframes back {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 nav img {
-  right: 200px;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 
 img.logo {
@@ -228,7 +245,6 @@ h3 {
 nav a {
   color: rgba(255, 255, 255, 0.5);
   transition: 0.5s all ease;
-  font-weight: 500;
   margin-right: 1rem;
 }
 
@@ -238,6 +254,7 @@ nav a:hover {
 
 nav a.router-link-exact-active {
   color: red;
+  font-weight: bold;
 }
 
 nav .server {
@@ -245,7 +262,9 @@ nav .server {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 1.2rem;
+
 }
 
 nav .server img {
@@ -256,8 +275,10 @@ nav .server img {
 
 nav .server h4 {
   color: white;
-  font-weight: 300;
-  font-size: 0.6rem;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  font-size: 0.7rem;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 520px) {
@@ -271,7 +292,7 @@ nav .server h4 {
 }
 
 @media only screen and (max-width: 900px) and (min-width: 521px) {
-
+rver
 
   .animate-charcter {
     font-size: 35px;
@@ -301,6 +322,58 @@ body {
   animation-duration: 1s;
 }
 
+wrapper {
+  margin-left: 60%;
+}
+.pinheader {
+  transform: rotate(-45deg);
+  width: 15px; /* Updated size */
+  height: 15px; /* Updated size */
+  border-radius: 50% 50% 50% 0;
+  background: #eb4e2c;
+  position: absolute;
+  margin: -10px 0 0 -10px; /* Updated margin */
+  animation: bounce;
+  animation-fill-mode: both;
+  animation-duration: 1s;
+}
+
+.pinheader:after {
+  content: "";
+  width: 7px; /* Updated size */
+  height: 7px; /* Updated size */
+  margin: 4px 0 0 4px; /* Updated margin */
+  background: #e6e6e6;
+  position: absolute;
+  border-radius: 50%;
+}
+
+
+.pulseheader {
+  transform: rotateX(55deg);
+  background: #d6d4d4;
+  border-radius: 50%;
+  height: 7px; /* Updated size */
+  width: 7px; /* Updated size */
+  position: absolute;
+  margin: 5.5px 0 0 -6px; /* Updated margin */
+}
+
+.pulseheader:after {
+  content: "";
+  border-radius: 50%;
+  height: 20px; /* Updated size */
+  width: 20px; /* Updated size */
+  position: absolute;
+  margin: -6.5px 0 0 -6.5px; /* Updated margin */
+  animation: pulsate 1s ease-out;
+  animation-iteration-count: infinite;
+  opacity: 0;
+  box-shadow: 0 0 1px 2px #eb4e2c;
+  animation-delay: 1.1s;
+}
+
+
 .pin:after {
   content: "";
   width: 28px;
@@ -310,6 +383,7 @@ body {
   position: absolute;
   border-radius: 50%;
 }
+
 
 
 
