@@ -51,7 +51,7 @@ function createSnapshot() {
 }
 
 async function upvote(refId, newVoteCount) {
-    const postRef = doc(db, 'uncwposts', refId)
+    const postRef = doc(db, currentCollection, refId)
     const post: any = (await getDoc(postRef)).data()
     const cookie = Cookies.get("id")
 
@@ -82,7 +82,7 @@ async function upvote(refId, newVoteCount) {
 }
 
 async function downvote(refId, newVoteCount) {
-    const postRef = doc(db, 'uncwposts', refId)
+    const postRef = doc(db, currentCollection, refId)
     const post: any = (await getDoc(postRef)).data()
     const cookie = Cookies.get("id")
     if (cookie != null) { // if user has not tawked yet
@@ -449,6 +449,7 @@ body {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
+    border-radius: 12px;
 }
 
 .user-list-item {
@@ -868,7 +869,7 @@ input:checked+.slider:before {
 }
 
 .bottom .post {
-    background-color: #cc8446;
+    background-color: #eb4e2c;
     border-radius: 20px;
     border: 0;
     box-sizing: border-box;
@@ -888,7 +889,7 @@ input:checked+.slider:before {
 }
 
 .post:hover {
-    background: rgb(0, 128, 128);
+    background: red;
 }
 
 .charlimit {
