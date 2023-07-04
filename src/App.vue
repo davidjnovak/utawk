@@ -15,13 +15,8 @@
 
       <nav>
         <img alt="logo" class="logo" src="@/assets/uTawkLogo.png" width="200" height="200" />
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">{{ this.school.name }}</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-        <div class="server">
-          <h4 v-if="this.school.access == true" :key="componentKey1">{{ this.school.name }}
-          </h4>
-          <h4 v-else :key="componentKey2">Watching {{ this.school.name }}</h4>
-        </div>
         <div class="wrapper">
           <div class="pinheader"></div>
           <div class="pulseheader"></div>
@@ -307,7 +302,6 @@ body {
 
 
 
-
 .pin {
   transform: rotate(-45deg);
   width: 60px;
@@ -323,9 +317,7 @@ body {
   animation-duration: 1s;
 }
 
-wrapper {
-  margin-left: 60%;
-}
+
 .pinheader {
   transform: rotate(-45deg);
   width: 15px; /* Updated size */
@@ -348,7 +340,7 @@ wrapper {
   background: #e6e6e6;
   position: absolute;
   border-radius: 50%;
-  z-index: 2;
+  
 }
 
 
