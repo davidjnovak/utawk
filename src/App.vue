@@ -211,6 +211,7 @@ nav {
   background: linear-gradient(45deg, #333, #555, #333); /* Gradient background */
   background-size: 200% 200%;
   animation: back 10s ease-in-out infinite;
+  z-index: -10;
 }
 
 @keyframes back {
@@ -336,6 +337,7 @@ wrapper {
   animation: bounce;
   animation-fill-mode: both;
   animation-duration: 1s;
+  z-index: 2;
 }
 
 .pinheader:after {
@@ -346,6 +348,7 @@ wrapper {
   background: #e6e6e6;
   position: absolute;
   border-radius: 50%;
+  z-index: 2;
 }
 
 
@@ -357,6 +360,7 @@ wrapper {
   width: 7px; /* Updated size */
   position: absolute;
   margin: 5.5px 0 0 -6px; /* Updated margin */
+  z-index: 1;
 }
 
 .pulseheader:after {
