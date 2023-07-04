@@ -869,7 +869,7 @@ input:checked+.slider:before {
 }
 
 .bottom .post {
-    background-color: #cc8446;
+    background-color: #eb4e2c;
     border-radius: 20px;
     border: 0;
     box-sizing: border-box;
@@ -889,7 +889,7 @@ input:checked+.slider:before {
 }
 
 .post:hover {
-    background: rgb(0, 128, 128);
+    background: red;
 }
 
 .charlimit {
