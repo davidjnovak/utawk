@@ -51,7 +51,7 @@ function createSnapshot() {
 }
 
 async function upvote(refId, newVoteCount) {
-    const postRef = doc(db, 'uncwposts', refId)
+    const postRef = doc(db, currentCollection, refId)
     const post: any = (await getDoc(postRef)).data()
     const cookie = Cookies.get("id")
 
@@ -82,7 +82,7 @@ async function upvote(refId, newVoteCount) {
 }
 
 async function downvote(refId, newVoteCount) {
-    const postRef = doc(db, 'uncwposts', refId)
+    const postRef = doc(db, currentCollection, refId)
     const post: any = (await getDoc(postRef)).data()
     const cookie = Cookies.get("id")
     if (cookie != null) { // if user has not tawked yet
