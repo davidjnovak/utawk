@@ -449,6 +449,7 @@ body {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
+    border-radius: 12px;
 }
 
 .user-list-item {
